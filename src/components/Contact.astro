@@ -1,0 +1,121 @@
+---
+import PixelIcon from './icons/PixelIcon';
+import { profile } from '@/data/profile';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// "https://wa.me/573013061414" → "+57 301 306 1414"
+const phone = profile.whatsapp.replace(/\D/g, '').replace(/^(\d{2})(\d{3})(\d{3})(\d{4})$/, '+$1 $2 $3 $4');
+
+const channels = [
+  { href: profile.whatsapp, label: 'WhatsApp', value: phone, icon: 'whatsapp' },
+  { href: profile.socials.linkedin, label: 'LinkedIn', value: 'yeison-david-gonzalez-loaiza', icon: 'linkedin' },
+  { href: profile.socials.github, label: 'GitHub', value: profile.socials.github.replace('https://github.com/', '@'), icon: 'github' },
+] as const;
+---
+
+<section id="contact" data-enter="flash" class="bg-navy text-lcd-3 py-24 md:py-36">
+  <div class="container-page grid gap-16 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+    <div>
+      <h2 class="text-[2.75rem] leading-[1] font-bold sm:text-6xl lg:text-[4.25rem]">
+        {t('contact.title')} <span class="text-lcd-2">{t('contact.titleHighlight')}</span>
+      </h2>
+      <p class="text-navy-ink mt-7 max-w-[46ch] text-lg leading-relaxed md:text-xl">{t('contact.text')}</p>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-6">
+        <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" class="btn btn-a" style="--frame: var(--color-lcd-3)">
+          <span class="btn-cap">A</span>
+          {t('contact.whatsapp')}
+        </a>
+        {
+          profile.email && (
+            <a href={`mailto:${profile.email}`} class="btn btn-b" style="--frame: var(--color-lcd-3)">
+              <span class="btn-cap">B</span>
+              {t('contact.email')}
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="bg-lcd-0 pixel-box self-end" style="--frame: var(--color-lcd-3)">
+      <p class="bg-lcd-3 text-lcd-0 hud px-5 py-3 text-xs">{t('contact.menu')}</p>
+      <ul class="p-2">
+        {
+          profile.email && (
+            <li class="flex items-center gap-3 px-3 py-3">
+              <PixelIcon name="mail" scale={2} className="text-lcd-2 shrink-0" />
+              <div class="min-w-0 flex-1">
+                <p class="hud text-lcd-2 text-[11px]">{t('contact.channel.email')}</p>
+                <a href={`mailto:${profile.email}`} class="block truncate text-[18px] hover:underline">
+                  {profile.email}
+                </a>
+              </div>
+              <button
+                type="button"
+                data-copy={profile.email}
+                data-copied-label={t('contact.copied')}
+                class="group/copy text-lcd-2 hover:text-lcd-3 hover:bg-lcd-1 relative grid size-10 shrink-0 place-items-center"
+                aria-label={t('contact.copy')}
+              >
+                <PixelIcon name="copy" scale={2} className="group-data-copied/copy:opacity-0" />
+                <PixelIcon name="check" scale={3} className="text-lcd-3 absolute opacity-0 group-data-copied/copy:opacity-100" />
+                <span data-copy-status class="sr-only" aria-live="polite"></span>
+              </button>
+            </li>
+          )
+        }
+        {
+          channels.map(({ href, label, value, icon }) => (
+            <li>
+              <a href={href} target="_blank" rel="noopener noreferrer" class="group hover:bg-lcd-1 focus-visible:bg-lcd-1 flex items-center gap-3 px-3 py-3">
+                <PixelIcon name={icon} scale={2} className="text-lcd-2 shrink-0" />
+                <div class="min-w-0 flex-1">
+                  <p class="hud text-lcd-2 text-[11px]">{label}</p>
+                  <p class="truncate text-[18px]">{value}</p>
+                </div>
+                <PixelIcon name="cursor" scale={2} className="text-lcd-3 mr-2 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" />
+              </a>
+            </li>
+          ))
+        }
+        <li class="border-lcd-1 mx-3 mt-1 flex items-center justify-between gap-4 border-t-2 border-dashed py-3">
+          <p class="hud text-lcd-2 text-[11px]">{t('contact.localTime')}</p>
+          <time data-local-time class="text-[18px] tabular-nums">--:--</time>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((button) => {
+    const status = button.querySelector<HTMLElement>('[data-copy-status]');
+    const label = button.getAttribute('aria-label') ?? '';
+    const copiedLabel = button.dataset.copiedLabel ?? '';
+    let timer = 0;
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(button.dataset.copy ?? '');
+      } catch {
+        return;
+      }
+      button.dataset.copied = '';
+      button.setAttribute('aria-label', copiedLabel);
+      if (status) status.textContent = copiedLabel;
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        delete button.dataset.copied;
+        button.setAttribute('aria-label', label);
+        if (status) status.textContent = '';
+      }, 1800);
+    });
+  });
+</script>

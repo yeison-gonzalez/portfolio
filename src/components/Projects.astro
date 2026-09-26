@@ -1,0 +1,318 @@
+---
+import { Image } from 'astro:assets';
+import ProjectArt from './ProjectArt.astro';
+import SectionHeading from './SectionHeading.astro';
+import PixelIcon from './icons/PixelIcon';
+import { profile } from '@/data/profile';
+import { projects } from '@/data/projects';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="projects" data-enter="carts" class="bg-body text-navy py-24 md:py-32">
+  <div class="container-page" data-console data-inserted-label={t('projects.inserted')} data-soon-label={t('projects.soon')}>
+    <SectionHeading
+      title={t('projects.title')}
+      highlight={t('projects.titleHighlight')}
+      subtitle={t('projects.subtitle')}
+      titleClass="text-navy"
+      highlightClass="text-body-ink"
+      subtitleClass="text-body-ink"
+    />
+
+    <p class="hud text-navy mb-6 flex items-center gap-2 text-[12px]">
+      <PixelIcon name="cursor" scale={2} className="animate-blink text-magenta" />
+      {t('projects.pick')}
+    </p>
+
+    <p class="sr-only" role="status" data-console-status></p>
+
+    <!-- Cartridge rack -->
+    <div class="flex gap-4 overflow-x-auto pt-3 pb-4 sm:gap-6" role="tablist" aria-label={t('projects.pick')}>
+      {
+        projects.map((project, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`cart-tab-${index}`}
+            aria-controls={`cart-panel-${index}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            tabindex={index === 0 ? 0 : -1}
+            data-cart={index}
+            data-url={project.url ?? ''}
+            class="enter-cart group bg-body-2 relative w-36 shrink-0 px-3 pt-2 pb-3 text-left transition-transform duration-150 ease-[steps(2)] hover:-translate-y-1.5 aria-selected:-translate-y-3 sm:w-44"
+            style={`--i: ${index}; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);`}
+          >
+            <span class="flex flex-col gap-[3px] pr-6 pb-2" aria-hidden="true">
+              <span class="bg-body-ink/40 h-[2px]" />
+              <span class="bg-body-ink/40 h-[2px]" />
+            </span>
+            <span class="bg-body block p-1">
+              <span class="relative block h-16 overflow-hidden sm:h-20" aria-hidden="true">
+                <ProjectArt art={project.art} />
+              </span>
+              <span data-cart-title class="bg-navy text-lcd-3 hud group-aria-selected:bg-magenta mt-1 block truncate px-1.5 py-1 text-[11px]">
+                {project.title}
+              </span>
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 grid items-start gap-12 lg:grid-cols-[22rem_1fr] lg:gap-16">
+      <!-- The console -->
+      <div class="mx-auto w-full max-w-[22rem]">
+        <div
+          class="border-body-2 bg-shell relative rounded-t-[0.6rem] rounded-br-[3.5rem] rounded-bl-[0.6rem] border-r-[6px] border-b-[6px] px-5 pt-4 pb-10"
+        >
+          <!-- On/off rail with the inserted cartridge's name -->
+          <div class="border-body-2 -mx-5 mb-4 flex items-center justify-between gap-3 border-b-4 px-5 pb-2" aria-hidden="true">
+            <span class="hud text-body-ink flex items-center gap-1 text-[10px]">
+              <PixelIcon name="cursorLeft" scale={1} /> off · on <PixelIcon name="cursor" scale={1} />
+            </span>
+            <span class="hud text-body-ink truncate text-[10px]" data-slot-label>{projects[0]?.title}</span>
+          </div>
+
+          <!-- Screen bezel -->
+          <div class="rounded-t-[0.5rem] rounded-br-[2rem] rounded-bl-[0.5rem] bg-bezel px-4 pt-3 pb-5">
+            <div class="flex items-center gap-2" aria-hidden="true">
+              <span class="bg-magenta h-[3px] flex-1"></span>
+              <span class="hud text-navy-ink text-[9px]">dot matrix · YG</span>
+              <span class="bg-navy-2 h-[3px] flex-1"></span>
+            </div>
+            <div class="mt-3 flex items-center gap-3">
+              <span class="flex flex-col items-center gap-1" aria-hidden="true">
+                <span class="bg-led size-2"></span>
+                <span class="hud text-navy-ink text-[9px]">power</span>
+              </span>
+              <div class="bg-lcd-3 relative aspect-[10/9] flex-1 overflow-hidden" aria-hidden="true">
+                {
+                  projects.map((project, index) => (
+                    <div class="absolute inset-0" data-screen-art={index} hidden={index !== 0}>
+                      {project.image ? (
+                        <Image src={project.image} alt="" widths={[320, 640]} sizes="18rem" class="size-full object-cover" />
+                      ) : (
+                        <ProjectArt art={project.art} />
+                      )}
+                    </div>
+                  ))
+                }
+                <p class="hud bg-lcd-0 text-lcd-3 absolute bottom-0 left-0 px-1.5 py-0.5 text-[10px]">{t('projects.concept')}</p>
+                <div class="bg-lcd-3 pointer-events-none absolute inset-0 grid place-items-center opacity-0" data-boot>
+                  <p class="text-lcd-0 hud px-3 text-center text-sm leading-tight" data-boot-title>{projects[0]?.title}</p>
+                </div>
+                <div class="bg-lcd-0 text-lcd-3 absolute inset-0 grid place-items-center" data-soon hidden>
+                  <p class="hud animate-blink text-sm">{t('projects.soon')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-navy font-pixel mt-4 text-lg font-bold" aria-hidden="true">
+            YG <span class="hud text-xs">portfolio</span>
+          </p>
+
+          <!-- Controls -->
+          <div class="mt-6 flex items-center justify-between">
+            <div class="relative size-24" role="group" aria-label={`${t('projects.prevCart')} / ${t('projects.nextCart')}`}>
+              <span class="absolute inset-x-8 inset-y-0 bg-dpad" aria-hidden="true"></span>
+              <span class="absolute inset-x-0 inset-y-8 bg-dpad" aria-hidden="true"></span>
+              <button type="button" data-dpad="-1" aria-label={t('projects.prevCart')} class="active:text-lcd-3 absolute top-8 left-0 grid size-8 place-items-center text-dpad-ink">
+                <PixelIcon name="cursorLeft" scale={2} />
+              </button>
+              <button type="button" data-dpad="1" aria-label={t('projects.nextCart')} class="active:text-lcd-3 absolute top-8 right-0 grid size-8 place-items-center text-dpad-ink">
+                <PixelIcon name="cursor" scale={2} />
+              </button>
+              <button type="button" data-dpad="-1" tabindex="-1" aria-hidden="true" class="absolute top-0 left-8 size-8"></button>
+              <button type="button" data-dpad="1" tabindex="-1" aria-hidden="true" class="absolute bottom-0 left-8 size-8"></button>
+            </div>
+            <div class="relative h-24 w-28 -rotate-[25deg]">
+              <button
+                type="button"
+                data-b
+                aria-label={t('projects.prevCart')}
+                class="bg-magenta hover:bg-magenta-hi hud text-lcd-3 absolute bottom-3 left-0 grid size-11 place-items-center rounded-full text-xs active:translate-y-0.5"
+              >
+                B
+              </button>
+              <button
+                type="button"
+                data-a
+                aria-label={t('projects.pressA')}
+                class="bg-magenta hover:bg-magenta-hi hud text-lcd-3 absolute top-2 right-0 grid size-11 place-items-center rounded-full text-xs active:translate-y-0.5"
+              >
+                A
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-center gap-6">
+            <span class="hud text-body-ink flex flex-col items-center gap-1 text-[11px]" aria-hidden="true">
+              <span class="h-2.5 w-10 -rotate-[25deg] rounded-full bg-rubber"></span>
+              select
+            </span>
+            <a
+              href={profile.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('projects.start')}
+              class="hud text-body-ink hover:text-navy flex flex-col items-center gap-1 text-[11px]"
+            >
+              <span class="h-2.5 w-10 -rotate-[25deg] rounded-full bg-rubber"></span>
+              start
+            </a>
+          </div>
+
+          <!-- Speaker grille -->
+          <span class="absolute right-7 bottom-7 flex -rotate-[25deg] gap-1.5" aria-hidden="true">
+            {[0, 1, 2, 3, 4, 5].map(() => <span class="h-9 w-1.5 rounded-full bg-body-2" />)}
+          </span>
+        </div>
+      </div>
+
+      <!-- Cartridge details -->
+      <div>
+        {
+          projects.map((project, index) => (
+            <article id={`cart-panel-${index}`} role="tabpanel" aria-labelledby={`cart-tab-${index}`} hidden={index !== 0}>
+              <h3 class="text-3xl font-bold md:text-4xl">{project.title}</h3>
+              <p class="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span class="text-body-ink text-[17px]">{project.category[lang]}</span>
+                <span class="hud bg-navy text-lcd-3 inline-flex items-center gap-2 px-2 py-1 text-[11px]">
+                  <span class:list={['size-2', project.status === 'building' ? 'bg-magenta animate-blink' : 'bg-lcd-2']} aria-hidden="true" />
+                  {project.status === 'building' ? t('projects.building') : t('projects.live')}
+                </span>
+              </p>
+              <p class="mt-5 max-w-[60ch] text-lg leading-relaxed">{project.description[lang]}</p>
+              <ul class="mt-6 space-y-2 text-[18px]">
+                {project.features[lang].map((feature) => (
+                  <li class="flex items-center gap-3">
+                    <PixelIcon name="cursor" scale={2} className="text-magenta shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <ul class="mt-6 flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <li class="border-navy border-2 px-2 py-0.5 text-[16px]">{tech}</li>
+                ))}
+              </ul>
+              {(project.url || project.repo) && (
+                <div class="mt-8 flex flex-wrap items-center gap-5">
+                  {project.url && (
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" class="btn btn-a" style="--frame: var(--color-navy)">
+                      <span class="btn-cap">A</span>
+                      {t('projects.visit')}
+                    </a>
+                  )}
+                  {project.repo && (
+                    <a href={project.repo} target="_blank" rel="noopener noreferrer" class="btn btn-b" style="--frame: var(--color-navy)">
+                      <PixelIcon name="github" scale={2} />
+                      {t('projects.code')}
+                    </a>
+                  )}
+                </div>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <a
+      href={profile.socials.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group bg-navy text-lcd-3 pixel-box mt-16 flex flex-wrap items-center gap-x-5 gap-y-3 px-6 py-5 md:px-8"
+      style="--frame: var(--color-navy)"
+    >
+      <PixelIcon name="github" scale={3} className="text-lcd-2 shrink-0" />
+      <div class="min-w-0 flex-1 basis-56">
+        <h3 class="text-xl font-bold">{t('projects.more.title')}</h3>
+        <p class="text-navy-ink mt-0.5 text-[17px]">{t('projects.more.text')}</p>
+      </div>
+      <span class="hud text-lcd-2 group-hover:text-lcd-3 inline-flex w-full items-center gap-2 text-xs sm:w-auto">
+        {t('projects.more.cta')}
+        <PixelIcon name="external" scale={2} />
+      </span>
+    </a>
+  </div>
+</section>
+
+<script>
+  // The console: pick a cartridge (rack tabs, D-pad or B), the screen boots it, A opens it.
+  document.querySelectorAll<HTMLElement>('[data-console]').forEach((root) => {
+    const carts = [...root.querySelectorAll<HTMLButtonElement>('[data-cart]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[id^="cart-panel-"]')];
+    const arts = [...root.querySelectorAll<HTMLElement>('[data-screen-art]')];
+    const boot = root.querySelector<HTMLElement>('[data-boot]');
+    const soon = root.querySelector<HTMLElement>('[data-soon]');
+    const slotLabel = root.querySelector<HTMLElement>('[data-slot-label]');
+    const bootTitle = root.querySelector<HTMLElement>('[data-boot-title]');
+    const status = root.querySelector<HTMLElement>('[data-console-status]');
+    const insertedLabel = root.dataset.insertedLabel ?? '';
+    const soonLabel = root.dataset.soonLabel ?? '';
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current = 0;
+    let soonTimer = 0;
+
+    const select = (index: number, focus = false) => {
+      current = (index + carts.length) % carts.length;
+      carts.forEach((cart, i) => {
+        cart.setAttribute('aria-selected', String(i === current));
+        cart.tabIndex = i === current ? 0 : -1;
+      });
+      panels.forEach((panel, i) => (panel.hidden = i !== current));
+      arts.forEach((art, i) => (art.hidden = i !== current));
+      const title = carts[current].querySelector('[data-cart-title]')?.textContent?.trim() ?? '';
+      if (slotLabel) slotLabel.textContent = title;
+      if (bootTitle) bootTitle.textContent = title;
+      if (status) status.textContent = `${insertedLabel}: ${title}`;
+      if (soon) soon.hidden = true;
+      // Boot splash: the cartridge title drops down the screen like a handheld logo, then the screen clears.
+      if (boot && !reducedMotion) {
+        boot.animate([{ opacity: 1 }, { opacity: 1, offset: 0.8 }, { opacity: 0 }], { duration: 1100, easing: 'steps(6, end)' });
+        bootTitle?.animate([{ transform: 'translateY(-120%)' }, { transform: 'translateY(0)', offset: 0.55 }, { transform: 'translateY(0)' }], {
+          duration: 1100,
+          easing: 'steps(8, end)',
+        });
+      }
+      if (focus) carts[current].focus();
+    };
+
+    carts.forEach((cart, index) => {
+      cart.addEventListener('click', () => select(index));
+      cart.addEventListener('keydown', (event) => {
+        const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+        if (!step) return;
+        event.preventDefault();
+        select(index + step, true);
+      });
+    });
+
+    root.querySelectorAll<HTMLButtonElement>('[data-dpad]').forEach((button) => {
+      button.addEventListener('click', () => select(current + Number(button.dataset.dpad)));
+    });
+    root.querySelector('[data-b]')?.addEventListener('click', () => select(current - 1));
+    root.querySelector('[data-a]')?.addEventListener('click', () => {
+      const url = carts[current].dataset.url;
+      if (url) {
+        window.open(url, '_blank', 'noopener');
+        return;
+      }
+      if (!soon) return;
+      soon.hidden = false;
+      if (status) status.textContent = soonLabel;
+      window.clearTimeout(soonTimer);
+      soonTimer = window.setTimeout(() => (soon.hidden = true), 1600);
+    });
+  });
+</script>

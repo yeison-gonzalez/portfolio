@@ -1,0 +1,316 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/pixelify-sans';
+@import '@fontsource/silkscreen/400.css';
+
+/* ---------- Design tokens: a Game Boy LCD plus the console's plastic ---------- */
+@theme {
+  --font-sans: 'Pixelify Sans Variable', ui-monospace, monospace;
+  --font-pixel: 'Pixelify Sans Variable', ui-monospace, monospace;
+  --font-hud: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace;
+
+  /* The four LCD shades, darkest to lightest (backlit). */
+  --color-lcd-0: #0f380f;
+  --color-lcd-1: #306230;
+  --color-lcd-2: #8bac0f;
+  --color-lcd-3: #cadc9f;
+
+  /* Console plastic. */
+  --color-body: #c9c5bf;
+  --color-body-2: #b3aea6;
+  --color-body-ink: #4a4d63;
+  --color-navy: #1e2355;
+  --color-navy-2: #2a3170;
+  --color-navy-ink: #a9aedb;
+  --color-magenta: #a3245f;
+  --color-magenta-hi: #bd3272;
+  --color-led: #e3453a;
+  --color-shell: #d8d4ce;
+  --color-rubber: #9d988f;
+  --color-dpad: #2b2d3a;
+  --color-dpad-ink: #6b6e80;
+  --color-bezel: #4a4d63;
+
+  --animate-blink: blink 1.1s steps(1) infinite;
+  --animate-hop: hop 0.9s steps(1) infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  @keyframes hop {
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-color: var(--color-lcd-1) var(--color-lcd-0);
+    background-color: var(--color-lcd-0);
+  }
+
+  body {
+    @apply bg-lcd-0 text-lcd-3 font-sans;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-pixel);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  ::selection {
+    background-color: var(--color-magenta);
+    color: var(--color-lcd-3);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-magenta-hi);
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.25em;
+    text-decoration-thickness: 2px;
+  }
+
+  img {
+    image-rendering: pixelated;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-lcd-1);
+    border: 3px solid var(--color-lcd-0);
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-lcd-0);
+  }
+}
+
+/* ---------- World utilities ---------- */
+@utility container-page {
+  width: 100%;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @variant md {
+    padding-inline: 2rem;
+  }
+}
+
+/* The LCD's dot-matrix: a faint grid of pixel gaps over a screen field. */
+@utility lcd-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-ink, rgb(15 56 15 / 0.07)) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-ink, rgb(15 56 15 / 0.07)) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* Notched pixel frame: four hard edges, empty corners. */
+@utility pixel-box {
+  --px: 4px;
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--frame, var(--color-lcd-0)),
+    0 var(--px) 0 0 var(--frame, var(--color-lcd-0)),
+    calc(var(--px) * -1) 0 0 0 var(--frame, var(--color-lcd-0)),
+    var(--px) 0 0 0 var(--frame, var(--color-lcd-0));
+}
+
+@utility hud {
+  font-family: var(--font-hud);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@utility btn {
+  --px: 4px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0.5rem 1.25rem 0.5rem 0.625rem;
+  font-family: var(--font-hud);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow:
+    0 calc(var(--px) * -1) 0 0 var(--frame, var(--color-lcd-0)),
+    0 var(--px) 0 0 var(--frame, var(--color-lcd-0)),
+    calc(var(--px) * -1) 0 0 0 var(--frame, var(--color-lcd-0)),
+    var(--px) 0 0 0 var(--frame, var(--color-lcd-0)),
+    var(--px) calc(var(--px) * 2) 0 0 var(--frame, var(--color-lcd-0));
+  transition: transform 90ms steps(2), background-color 90ms steps(2);
+
+  &:active {
+    transform: translateY(var(--px));
+    box-shadow:
+      0 calc(var(--px) * -1) 0 0 var(--frame, var(--color-lcd-0)),
+      0 var(--px) 0 0 var(--frame, var(--color-lcd-0)),
+      calc(var(--px) * -1) 0 0 0 var(--frame, var(--color-lcd-0)),
+      var(--px) 0 0 0 var(--frame, var(--color-lcd-0));
+  }
+}
+
+/* A button: the console's magenta action color. */
+@utility btn-a {
+  background-color: var(--color-magenta);
+  color: var(--color-lcd-3);
+
+  &:hover {
+    background-color: var(--color-magenta-hi);
+  }
+}
+
+/* B button / secondary: sits on the field's own light shade. */
+@utility btn-b {
+  background-color: var(--color-lcd-3);
+  color: var(--color-lcd-0);
+
+  &:hover {
+    background-color: #dbe8b8;
+  }
+}
+
+/* The round button cap inside `.btn` ("A" / "B"). */
+@utility btn-cap {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  background-color: rgb(15 56 15 / 0.35);
+}
+
+/* ---------- Section entrances (only when JS is running; content is visible without it) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: the name drops in like a handheld boot logo, then the rest blinks on. */
+  .js [data-enter='boot'] .boot-logo {
+    animation: boot-drop 1300ms steps(13) both;
+  }
+  .js [data-enter='boot'] .boot-after {
+    animation: blink-on 240ms steps(2) both;
+    animation-delay: calc(1350ms + var(--i, 0) * 120ms);
+  }
+
+  /* About: the dialog box opens row by row. */
+  .js [data-enter='dialog']:not(.is-in) .enter-box {
+    transform: scaleY(0);
+  }
+  .js [data-enter='dialog'].is-in .enter-box {
+    animation: box-open 360ms steps(6) both;
+    transform-origin: top;
+  }
+
+  /* Stack: inventory slots pop in one by one. */
+  .js [data-enter='slots']:not(.is-in) .enter-slot {
+    opacity: 0;
+  }
+  .js [data-enter='slots'].is-in .enter-slot {
+    animation: slot-pop 240ms steps(3) both;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+
+  /* Experience: the map nodes light up along the path. */
+  .js [data-enter='map']:not(.is-in) .enter-node {
+    opacity: 0;
+  }
+  .js [data-enter='map'].is-in .enter-node {
+    animation: blink-on 300ms steps(3) both;
+    animation-delay: calc(var(--i, 0) * 160ms);
+  }
+
+  /* Projects: cartridges slide in like they are being inserted. */
+  .js [data-enter='carts']:not(.is-in) .enter-cart {
+    opacity: 0;
+  }
+  .js [data-enter='carts'].is-in .enter-cart {
+    animation: cart-insert 420ms steps(6) both;
+    animation-delay: calc(var(--i, 0) * 140ms);
+  }
+
+  /* Contact: the screen flashes twice, like a level-clear. */
+  .js [data-enter='flash'].is-in {
+    animation: screen-flash 520ms steps(1) both;
+  }
+}
+
+@keyframes boot-drop {
+  from {
+    transform: translateY(-110vh);
+  }
+}
+@keyframes blink-on {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes box-open {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes slot-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+@keyframes cart-insert {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+}
+@keyframes screen-flash {
+  0%,
+  50% {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  25%,
+  75%,
+  100% {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

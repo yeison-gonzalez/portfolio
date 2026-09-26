@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T03:55:56.141Z",
+  "title": "Design System: Yeison Gonzalez Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "lcd-0": {
+        "role": "neutral",
+        "displayName": "Screen Black-Green",
+        "cssVar": "--color-lcd-0",
+        "canonical": "#0f380f",
+        "tonalRamp": [
+          "#0f380f",
+          "#306230",
+          "#8bac0f",
+          "#cadc9f"
+        ]
+      },
+      "lcd-1": {
+        "role": "neutral",
+        "displayName": "Screen Dark",
+        "cssVar": "--color-lcd-1",
+        "canonical": "#306230",
+        "tonalRamp": [
+          "#0f380f",
+          "#306230",
+          "#8bac0f",
+          "#cadc9f"
+        ]
+      },
+      "lcd-2": {
+        "role": "neutral",
+        "displayName": "Screen Mid",
+        "cssVar": "--color-lcd-2",
+        "canonical": "#8bac0f",
+        "tonalRamp": [
+          "#0f380f",
+          "#306230",
+          "#8bac0f",
+          "#cadc9f"
+        ]
+      },
+      "lcd-3": {
+        "role": "neutral",
+        "displayName": "Backlight",
+        "cssVar": "--color-lcd-3",
+        "canonical": "#cadc9f",
+        "tonalRamp": [
+          "#0f380f",
+          "#306230",
+          "#8bac0f",
+          "#cadc9f"
+        ]
+      },
+      "body": {
+        "role": "neutral",
+        "displayName": "Console Gray",
+        "cssVar": "--color-body",
+        "canonical": "#c9c5bf",
+        "tonalRamp": [
+          "oklch(15% 0.008 75)",
+          "oklch(25% 0.008 75)",
+          "oklch(35% 0.008 75)",
+          "oklch(45% 0.008 75)",
+          "oklch(57% 0.008 75)",
+          "oklch(70% 0.008 75)",
+          "oklch(83% 0.008 75)",
+          "oklch(95% 0.008 75)"
+        ]
+      },
+      "body-2": {
+        "role": "neutral",
+        "displayName": "Shell Shadow Gray",
+        "cssVar": "--color-body-2",
+        "canonical": "#b3aea6",
+        "tonalRamp": [
+          "oklch(15% 0.011 75)",
+          "oklch(25% 0.011 75)",
+          "oklch(35% 0.011 75)",
+          "oklch(45% 0.011 75)",
+          "oklch(57% 0.011 75)",
+          "oklch(70% 0.011 75)",
+          "oklch(83% 0.011 75)",
+          "oklch(95% 0.011 75)"
+        ]
+      },
+      "body-ink": {
+        "role": "neutral",
+        "displayName": "Gray Ink",
+        "cssVar": "--color-body-ink",
+        "canonical": "#4a4d63",
+        "tonalRamp": [
+          "oklch(15% 0.035 280)",
+          "oklch(25% 0.035 280)",
+          "oklch(35% 0.035 280)",
+          "oklch(45% 0.035 280)",
+          "oklch(57% 0.035 280)",
+          "oklch(70% 0.035 280)",
+          "oklch(83% 0.035 280)",
+          "oklch(95% 0.035 280)"
+        ]
+      },
+      "navy": {
+        "role": "secondary",
+        "displayName": "Label Navy",
+        "cssVar": "--color-navy",
+        "canonical": "#1e2355",
+        "tonalRamp": [
+          "oklch(15% 0.09 275)",
+          "oklch(25% 0.09 275)",
+          "oklch(35% 0.09 275)",
+          "oklch(45% 0.09 275)",
+          "oklch(57% 0.09 275)",
+          "oklch(70% 0.09 275)",
+          "oklch(83% 0.09 275)",
+          "oklch(95% 0.09 275)"
+        ]
+      },
+      "navy-2": {
+        "role": "secondary",
+        "displayName": "Raised Navy",
+        "cssVar": "--color-navy-2",
+        "canonical": "#2a3170",
+        "tonalRamp": [
+          "oklch(15% 0.11 274)",
+          "oklch(25% 0.11 274)",
+          "oklch(35% 0.11 274)",
+          "oklch(45% 0.11 274)",
+          "oklch(57% 0.11 274)",
+          "oklch(70% 0.11 274)",
+          "oklch(83% 0.11 274)",
+          "oklch(95% 0.11 274)"
+        ]
+      },
+      "navy-ink": {
+        "role": "secondary",
+        "displayName": "Faded Label Ink",
+        "cssVar": "--color-navy-ink",
+        "canonical": "#a9aedb",
+        "tonalRamp": [
+          "oklch(15% 0.07 278)",
+          "oklch(25% 0.07 278)",
+          "oklch(35% 0.07 278)",
+          "oklch(45% 0.07 278)",
+          "oklch(57% 0.07 278)",
+          "oklch(70% 0.07 278)",
+          "oklch(83% 0.07 278)",
+          "oklch(95% 0.07 278)"
+        ]
+      },
+      "magenta": {
+        "role": "primary",
+        "displayName": "Button Magenta",
+        "cssVar": "--color-magenta",
+        "canonical": "#a3245f",
+        "tonalRamp": [
+          "oklch(15% 0.16 358)",
+          "oklch(25% 0.16 358)",
+          "oklch(35% 0.16 358)",
+          "oklch(45% 0.16 358)",
+          "oklch(57% 0.16 358)",
+          "oklch(70% 0.16 358)",
+          "oklch(83% 0.16 358)",
+          "oklch(95% 0.16 358)"
+        ]
+      },
+      "magenta-hi": {
+        "role": "primary",
+        "displayName": "Pressed Magenta",
+        "cssVar": "--color-magenta-hi",
+        "canonical": "#bd3272",
+        "tonalRamp": [
+          "oklch(15% 0.18 358)",
+          "oklch(25% 0.18 358)",
+          "oklch(35% 0.18 358)",
+          "oklch(45% 0.18 358)",
+          "oklch(57% 0.18 358)",
+          "oklch(70% 0.18 358)",
+          "oklch(83% 0.18 358)",
+          "oklch(95% 0.18 358)"
+        ]
+      },
+      "led": {
+        "role": "tertiary",
+        "displayName": "Power Red",
+        "cssVar": "--color-led",
+        "canonical": "#e3453a",
+        "tonalRamp": [
+          "oklch(15% 0.2 29)",
+          "oklch(25% 0.2 29)",
+          "oklch(35% 0.2 29)",
+          "oklch(45% 0.2 29)",
+          "oklch(57% 0.2 29)",
+          "oklch(70% 0.2 29)",
+          "oklch(83% 0.2 29)",
+          "oklch(95% 0.2 29)"
+        ]
+      },
+      "shell": {
+        "role": "neutral",
+        "displayName": "Shell White",
+        "cssVar": "--color-shell",
+        "canonical": "#d8d4ce",
+        "tonalRamp": [
+          "oklch(15% 0.007 75)",
+          "oklch(25% 0.007 75)",
+          "oklch(35% 0.007 75)",
+          "oklch(45% 0.007 75)",
+          "oklch(57% 0.007 75)",
+          "oklch(70% 0.007 75)",
+          "oklch(83% 0.007 75)",
+          "oklch(95% 0.007 75)"
+        ]
+      },
+      "rubber": {
+        "role": "neutral",
+        "displayName": "Rubber Gray",
+        "cssVar": "--color-rubber",
+        "canonical": "#9d988f",
+        "tonalRamp": [
+          "oklch(15% 0.012 80)",
+          "oklch(25% 0.012 80)",
+          "oklch(35% 0.012 80)",
+          "oklch(45% 0.012 80)",
+          "oklch(57% 0.012 80)",
+          "oklch(70% 0.012 80)",
+          "oklch(83% 0.012 80)",
+          "oklch(95% 0.012 80)"
+        ]
+      },
+      "dpad": {
+        "role": "neutral",
+        "displayName": "D-Pad Black",
+        "cssVar": "--color-dpad",
+        "canonical": "#2b2d3a",
+        "tonalRamp": [
+          "oklch(15% 0.02 280)",
+          "oklch(25% 0.02 280)",
+          "oklch(35% 0.02 280)",
+          "oklch(45% 0.02 280)",
+          "oklch(57% 0.02 280)",
+          "oklch(70% 0.02 280)",
+          "oklch(83% 0.02 280)",
+          "oklch(95% 0.02 280)"
+        ]
+      },
+      "dpad-ink": {
+        "role": "neutral",
+        "displayName": "D-Pad Arrow",
+        "cssVar": "--color-dpad-ink",
+        "canonical": "#6b6e80",
+        "tonalRamp": [
+          "oklch(15% 0.03 280)",
+          "oklch(25% 0.03 280)",
+          "oklch(35% 0.03 280)",
+          "oklch(45% 0.03 280)",
+          "oklch(57% 0.03 280)",
+          "oklch(70% 0.03 280)",
+          "oklch(83% 0.03 280)",
+          "oklch(95% 0.03 280)"
+        ]
+      },
+      "bezel": {
+        "role": "neutral",
+        "displayName": "Bezel Slate",
+        "cssVar": "--color-bezel",
+        "canonical": "#4a4d63",
+        "tonalRamp": [
+          "oklch(15% 0.035 280)",
+          "oklch(25% 0.035 280)",
+          "oklch(35% 0.035 280)",
+          "oklch(45% 0.035 280)",
+          "oklch(57% 0.035 280)",
+          "oklch(70% 0.035 280)",
+          "oklch(83% 0.035 280)",
+          "oklch(95% 0.035 280)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Boot Logo",
+        "purpose": "The hero name and the 404 numeral only."
+      },
+      "headline": {
+        "displayName": "Section Heading",
+        "purpose": "Two-tone section headings; contact runs larger as the closing screen."
+      },
+      "title": {
+        "displayName": "Window Title",
+        "purpose": "Sub-headings, level card and project titles, readout names, the dialog first page."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default 17px reading text, list rows, status values."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Intros, bios, subtitles and level highlights."
+      },
+      "label": {
+        "displayName": "HUD",
+        "purpose": "Silkscreen uppercase for nav, window bars, keys, dates, hints and badges (9–12px)."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Silkscreen uppercase on A/B buttons."
+      }
+    },
+    "shadows": [
+      {
+        "name": "pixel-frame",
+        "value": "0 -4px 0 0 F, 0 4px 0 0 F, -4px 0 0 0 F, 4px 0 0 0 F",
+        "purpose": "Notched window frame (F = contrasting shade); four hard edges, empty corners."
+      },
+      {
+        "name": "selection-frame",
+        "value": "0 -3px 0 0 F, 0 3px 0 0 F, -3px 0 0 0 F, 3px 0 0 0 F",
+        "purpose": "Thinner frame: magenta on the selected inventory slot, lcd-3 around map nodes."
+      },
+      {
+        "name": "key-travel",
+        "value": "pixel-frame + 4px 8px 0 0 F",
+        "purpose": "The only drop in the system, under buttons; removed on :active as the key moves down 4px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "blink",
+        "value": "1.1s steps(1) infinite",
+        "purpose": "Cursors, ▼ markers, block caret, in-progress squares."
+      },
+      {
+        "name": "hop",
+        "value": "0.9s steps(1) infinite, translateY(-6px)",
+        "purpose": "The current career-map marker."
+      },
+      {
+        "name": "key-press",
+        "value": "90ms steps(2)",
+        "purpose": "Button press travel and hover color."
+      },
+      {
+        "name": "select-lift",
+        "value": "150ms steps(2); hotbar slot and trophy -4px, rack cartridge -6px hover / -12px inserted",
+        "purpose": "Selection lift on hotbar slots, trophy pedestals and rack cartridges."
+      },
+      {
+        "name": "select-lift",
+        "value": "150ms steps(2); hotbar slot and trophy -4px, rack cartridge -6px hover / -12px inserted",
+        "purpose": "Selection lift on hotbar slots, trophy pedestals and rack cartridges."
+      },
+      {
+        "name": "path-fill",
+        "value": "500ms steps(8)",
+        "purpose": "Walked part of the career-map track."
+      },
+      {
+        "name": "enter-boot",
+        "value": "boot-drop 1300ms steps(13); then blink-on 240ms steps(2), delay 1350ms + i*120ms",
+        "purpose": "Hero entrance: the name drops in like a boot logo."
+      },
+      {
+        "name": "enter-dialog",
+        "value": "box-open scaleY 360ms steps(6); typewriter 2 chars / 30ms, first page after 380ms",
+        "purpose": "About entrance; every later dialog page types the same way."
+      },
+      {
+        "name": "enter-slots",
+        "value": "slot-pop 240ms steps(3), stagger 45ms",
+        "purpose": "Stack entrance."
+      },
+      {
+        "name": "enter-map",
+        "value": "blink-on 300ms steps(3), stagger 160ms",
+        "purpose": "Experience entrance."
+      },
+      {
+        "name": "enter-carts",
+        "value": "cart-insert 420ms steps(6) from +48px, stagger 140ms",
+        "purpose": "Projects entrance: rack cartridges insert."
+      },
+      {
+        "name": "enter-flash",
+        "value": "screen-flash 520ms steps(1), invert twice",
+        "purpose": "Contact entrance, a level-clear flash."
+      },
+      {
+        "name": "laptop-idle",
+        "value": "360deg per 22s, drag with inertia",
+        "purpose": "Hero laptop spin; idle stops under reduced motion."
+      },
+      {
+        "name": "console-boot",
+        "value": "screen 1100ms steps(6, end) fade after 80%; title drop from -120% in steps(8, end)",
+        "purpose": "Boot splash on every cartridge change in the handheld console."
+      },
+      {
+        "name": "console-soon",
+        "value": "lcd-0 overlay, blinking text, 1600ms",
+        "purpose": "A pressed on a cartridge with no link."
+      },
+      {
+        "name": "console-boot",
+        "value": "screen 1100ms steps(6, end) fade after 80%; title drop from -120% in steps(8, end)",
+        "purpose": "Boot splash on every cartridge change in the handheld console."
+      },
+      {
+        "name": "console-soon",
+        "value": "lcd-0 overlay, blinking text, 1600ms",
+        "purpose": "A pressed on a cartridge with no link."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "static",
+        "purpose": "All entrances off, typewriter instant, boot splash skipped, scroll-behavior auto."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "A Button",
+      "kind": "button",
+      "refersTo": "button-a",
+      "description": "Primary action: magenta console key with a round A cap and a 4px key-travel press.",
+      "html": "<div class=\"ds-field-navy\"><a href=\"#\" class=\"ds-btn-a\"><span class=\"ds-cap\">A</span>Let's talk</a></div>",
+      "css": ".ds-field-navy { background: var(--color-navy, #1e2355); padding: 32px; } .ds-btn-a { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 20px 8px 10px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; white-space: nowrap; border: 0; border-radius: 0; cursor: pointer; text-decoration: none; background: var(--color-magenta, #a3245f); color: var(--color-lcd-3, #cadc9f); box-shadow: 0 -4px 0 0 var(--color-lcd-3, #cadc9f), 0 4px 0 0 var(--color-lcd-3, #cadc9f), -4px 0 0 0 var(--color-lcd-3, #cadc9f), 4px 0 0 0 var(--color-lcd-3, #cadc9f), 4px 8px 0 0 var(--color-lcd-3, #cadc9f); transition: transform 90ms steps(2), background-color 90ms steps(2); } .ds-btn-a:hover { background: var(--color-magenta-hi, #bd3272); } .ds-btn-a:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-btn-a:active { transform: translateY(4px); box-shadow: 0 -4px 0 0 var(--color-lcd-3, #cadc9f), 0 4px 0 0 var(--color-lcd-3, #cadc9f), -4px 0 0 0 var(--color-lcd-3, #cadc9f), 4px 0 0 0 var(--color-lcd-3, #cadc9f); } .ds-btn-a .ds-cap { display: grid; place-items: center; width: 28px; height: 28px; font-size: 12px; border-radius: 999px; background: rgb(15 56 15 / 0.35); }"
+    },
+    {
+      "name": "B Button",
+      "kind": "button",
+      "refersTo": "button-b",
+      "description": "Secondary action: pale backlight key with a round B cap; frame follows the field.",
+      "html": "<div class=\"ds-field-gray\"><a href=\"#\" class=\"ds-btn-b\"><span class=\"ds-cap\">B</span>View experience</a></div>",
+      "css": ".ds-field-gray { background: var(--color-body, #c9c5bf); padding: 32px; } .ds-btn-b { display: inline-flex; align-items: center; gap: 12px; min-height: 48px; padding: 8px 20px 8px 10px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; white-space: nowrap; border: 0; border-radius: 0; cursor: pointer; text-decoration: none; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); box-shadow: 0 -4px 0 0 var(--color-navy, #1e2355), 0 4px 0 0 var(--color-navy, #1e2355), -4px 0 0 0 var(--color-navy, #1e2355), 4px 0 0 0 var(--color-navy, #1e2355), 4px 8px 0 0 var(--color-navy, #1e2355); transition: transform 90ms steps(2), background-color 90ms steps(2); } .ds-btn-b:hover { background: #dbe8b8; } .ds-btn-b:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-btn-b:active { transform: translateY(4px); box-shadow: 0 -4px 0 0 var(--color-navy, #1e2355), 0 4px 0 0 var(--color-navy, #1e2355), -4px 0 0 0 var(--color-navy, #1e2355), 4px 0 0 0 var(--color-navy, #1e2355); } .ds-btn-b .ds-cap { display: grid; place-items: center; width: 28px; height: 28px; font-size: 12px; border-radius: 999px; background: rgb(15 56 15 / 0.35); }"
+    },
+    {
+      "name": "HUD Navigation",
+      "kind": "nav",
+      "refersTo": "hud-nav",
+      "description": "Fixed lcd-0 bar; HUD links with a blinking ▶ cursor on the current section and a magenta A CTA.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"ds-nav-home\"><span class=\"ds-nav-tile\">YG</span>Yeison Gonzalez</a><ul class=\"ds-nav-links\"><li><a href=\"#\" aria-current=\"true\"><svg class=\"ds-blink\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg>About</a></li><li><a href=\"#\"><svg class=\"ds-ghost\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg>Stack</a></li><li><a href=\"#\"><svg class=\"ds-ghost\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg>Experience</a></li></ul><a href=\"#\" class=\"ds-nav-cta\"><span class=\"ds-cap\">A</span>Let's talk</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; padding: 0 20px; background: var(--color-lcd-0, #0f380f); border-bottom: 4px solid var(--color-lcd-1, #306230); } .ds-nav-home { display: flex; align-items: center; gap: 12px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; color: var(--color-lcd-3, #cadc9f); text-decoration: none; } .ds-nav-tile { display: grid; place-items: center; height: 32px; min-width: 32px; padding: 0 6px; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); font-size: 12px; } .ds-nav-links { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; } .ds-nav-links a { display: flex; align-items: center; gap: 8px; padding: 8px 10px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; color: var(--color-lcd-2, #8bac0f); text-decoration: none; } .ds-nav-links a:hover, .ds-nav-links a[aria-current] { color: var(--color-lcd-3, #cadc9f); } .ds-nav-links a:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-ghost { opacity: 0; } .ds-nav-links a:hover .ds-ghost { opacity: 1; } .ds-blink { animation: ds-blink 1.1s steps(1) infinite; } @keyframes ds-blink { 50% { opacity: 0; } } .ds-nav-cta { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 12px 4px 6px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; background: var(--color-magenta, #a3245f); color: var(--color-lcd-3, #cadc9f); text-decoration: none; box-shadow: 0 -3px 0 0 var(--color-lcd-0, #0f380f), 0 3px 0 0 var(--color-lcd-0, #0f380f), -3px 0 0 0 var(--color-lcd-0, #0f380f), 3px 0 0 0 var(--color-lcd-0, #0f380f), 3px 6px 0 0 var(--color-lcd-0, #0f380f); } .ds-nav-cta:hover { background: var(--color-magenta-hi, #bd3272); } .ds-nav-cta:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-nav-cta .ds-cap { display: grid; place-items: center; width: 24px; height: 24px; font-size: 10px; border-radius: 999px; background: rgb(15 56 15 / 0.35); } @media (prefers-reduced-motion: reduce) { .ds-blink { animation: none; } }"
+    },
+    {
+      "name": "Dialog Box",
+      "kind": "card",
+      "refersTo": "dialog-box",
+      "description": "Paged RPG text box: typed pages with a block cursor, a page counter and a next key that turns the page.",
+      "html": "<div class=\"ds-field-pale\"><div class=\"ds-dialog\"><p class=\"ds-dialog-quote\">I build interfaces people enjoy using.<span class=\"ds-caret\"></span></p><div class=\"ds-dialog-foot\"><p class=\"ds-dialog-page\">Page 1/4</p><button type=\"button\" class=\"ds-dialog-next\">Next<svg class=\"ds-blinker\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 7 4\" width=\"14\" height=\"8\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"7\" height=\"1\"/><rect x=\"1\" y=\"1\" width=\"5\" height=\"1\"/><rect x=\"2\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"3\" y=\"3\" width=\"1\" height=\"1\"/></svg></button></div></div></div>",
+      "css": ".ds-field-pale { background-color: var(--color-lcd-3, #cadc9f); background-image: linear-gradient(to right, rgb(15 56 15 / 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgb(15 56 15 / 0.07) 1px, transparent 1px); background-size: 4px 4px; padding: 32px; } .ds-dialog { display: flex; flex-direction: column; min-height: 240px; font-family: 'Pixelify Sans Variable', ui-monospace, monospace; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); padding: 28px; box-shadow: 0 -4px 0 0 var(--color-lcd-0, #0f380f), 0 4px 0 0 var(--color-lcd-0, #0f380f), -4px 0 0 0 var(--color-lcd-0, #0f380f), 4px 0 0 0 var(--color-lcd-0, #0f380f); } .ds-dialog-quote { margin: 0; max-width: 58ch; font-size: 26px; font-weight: 600; line-height: 1.3; } .ds-caret { display: inline-block; width: 0.5em; height: 0.9em; margin-left: 4px; transform: translateY(0.1em); background: var(--color-lcd-0, #0f380f); animation: ds-blink 1.1s steps(1) infinite; } .ds-dialog-foot { margin-top: auto; padding-top: 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; } .ds-dialog-page { margin: 0; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10px; color: var(--color-lcd-1, #306230); } .ds-dialog-next { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 0; border-radius: 0; cursor: pointer; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 11px; background: var(--color-lcd-0, #0f380f); color: var(--color-lcd-3, #cadc9f); } .ds-dialog-next:hover { background: var(--color-lcd-1, #306230); } .ds-dialog-next:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-blinker { animation: ds-blink 1.1s steps(1) infinite; } @keyframes ds-blink { 50% { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-caret, .ds-blinker { animation: none; } }"
+    },
+    {
+      "name": "Status Screen",
+      "kind": "card",
+      "refersTo": "window-title-bar",
+      "description": "Framed window with an lcd-0 HUD title bar over a key/value list with dashed dividers.",
+      "html": "<div class=\"ds-status\"><p class=\"ds-status-bar\">Status<span>YG</span></p><dl><div><dt>Class</dt><dd>React Engineer</dd></div><div><dt>Experience</dt><dd>7+ years</dd></div><div><dt>Team</dt><dd>3 frontend devs</dd></div></dl></div>",
+      "css": ".ds-status { max-width: 420px; font-family: 'Pixelify Sans Variable', ui-monospace, monospace; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); box-shadow: 0 -4px 0 0 var(--color-lcd-0, #0f380f), 0 4px 0 0 var(--color-lcd-0, #0f380f), -4px 0 0 0 var(--color-lcd-0, #0f380f), 4px 0 0 0 var(--color-lcd-0, #0f380f); } .ds-status-bar { display: flex; justify-content: space-between; margin: 0; padding: 12px 20px; background: var(--color-lcd-0, #0f380f); color: var(--color-lcd-3, #cadc9f); font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; } .ds-status-bar span { color: var(--color-lcd-2, #8bac0f); } .ds-status dl { margin: 0; padding: 8px 20px; } .ds-status dl > div { display: grid; grid-template-columns: 8.5rem 1fr; gap: 12px; padding: 12px 0; border-bottom: 2px dashed var(--color-lcd-2, #8bac0f); } .ds-status dl > div:last-child { border-bottom: 0; } .ds-status dt { font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 11px; color: var(--color-lcd-1, #306230); padding-top: 2px; } .ds-status dd { margin: 0; font-size: 17px; line-height: 1.375; }"
+    },
+    {
+      "name": "Inventory Slot",
+      "kind": "chip",
+      "refersTo": "inventory-slot",
+      "description": "Square LCD slot on the navy field with its LCD logo, HUD name and CV-role pips; selection is a 3px magenta frame with a magenta ▶ pointer.",
+      "html": "<div class=\"ds-field-navy2\"><ul class=\"ds-inv\" role=\"listbox\" aria-label=\"Inventory\"><li role=\"presentation\"><button role=\"option\" aria-selected=\"true\" class=\"ds-slot\"><svg class=\"ds-slot-ptr\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 9 9\" width=\"36\" height=\"36\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"1\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"7\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"1\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"6\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"1\" y=\"2\" width=\"7\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"9\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"2\" height=\"1\"/><rect x=\"3\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"7\" y=\"4\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"9\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"9\" height=\"1\"/><rect x=\"1\" y=\"7\" width=\"7\" height=\"1\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\"/><rect x=\"6\" y=\"8\" width=\"1\" height=\"1\"/></svg><span>Git</span><span class=\"ds-pips\" aria-hidden=\"true\"><i></i><i></i><i></i><i class=\"ds-off\"></i><i class=\"ds-off\"></i></span></button></li><li role=\"presentation\"><button role=\"option\" aria-selected=\"false\" class=\"ds-slot\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 7 7\" width=\"21\" height=\"21\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"2\" y=\"1\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"7\" height=\"1\"/><rect x=\"1\" y=\"3\" width=\"5\" height=\"1\"/><rect x=\"2\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"1\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"4\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"2\" height=\"1\"/><rect x=\"5\" y=\"6\" width=\"2\" height=\"1\"/></svg><span>TypeScript</span></button></li><li role=\"presentation\"><button role=\"option\" aria-selected=\"false\" class=\"ds-slot\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 5\" width=\"20\" height=\"20\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"2\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"2\" y=\"1\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"5\" height=\"1\"/><rect x=\"2\" y=\"3\" width=\"1\" height=\"1\"/><rect x=\"2\" y=\"4\" width=\"1\" height=\"1\"/></svg><span>Tailwind</span></button></li></ul></div>",
+      "css": ".ds-field-navy2 { background: var(--color-navy, #1e2355); padding: 32px; } .ds-inv { display: grid; grid-template-columns: repeat(3, 88px); gap: 12px; list-style: none; margin: 0; padding: 0; } .ds-slot { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; width: 88px; aspect-ratio: 1; padding: 8px; border: 0; border-radius: 0; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); cursor: pointer; } .ds-slot:hover { background: #dbe8b8; } .ds-slot:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-slot span { font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9px; line-height: 1.2; } .ds-slot[aria-selected=\"true\"] { box-shadow: 0 -3px 0 0 var(--color-magenta, #a3245f), 0 3px 0 0 var(--color-magenta, #a3245f), -3px 0 0 0 var(--color-magenta, #a3245f), 3px 0 0 0 var(--color-magenta, #a3245f); } .ds-slot-ptr { position: absolute; top: 50%; left: -14px; transform: translateY(-50%); color: var(--color-magenta, #a3245f); } .ds-pips { display: flex; gap: 3px; } .ds-pips i { width: 6px; height: 6px; background: currentColor; } .ds-pips i.ds-off { opacity: 0.2; }"
+    },
+    {
+      "name": "Career Map Nodes",
+      "kind": "custom",
+      "refersTo": "map-node-current",
+      "description": "Level map: dot-dash track with the walked part filled, square nodes framed in lcd-3, magenta current node with a hopping ▼.",
+      "html": "<div class=\"ds-map\"><div class=\"ds-track\"><div class=\"ds-walked\"></div></div><ol class=\"ds-nodes\" role=\"tablist\" aria-label=\"Career\"><li><button role=\"tab\" aria-selected=\"false\" class=\"ds-node is-reached\">1-1</button></li><li><button role=\"tab\" aria-selected=\"false\" class=\"ds-node is-reached\">2-1</button></li><li class=\"ds-node-wrap\"><svg class=\"ds-hop\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 7 4\" width=\"21\" height=\"12\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"7\" height=\"1\"/><rect x=\"1\" y=\"1\" width=\"5\" height=\"1\"/><rect x=\"2\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"3\" y=\"3\" width=\"1\" height=\"1\"/></svg><button role=\"tab\" aria-selected=\"true\" class=\"ds-node is-current\">2-2</button></li><li><button role=\"tab\" aria-selected=\"false\" class=\"ds-node\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 7 7\" width=\"21\" height=\"21\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"3\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"2\" y=\"1\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"7\" height=\"1\"/><rect x=\"1\" y=\"3\" width=\"5\" height=\"1\"/><rect x=\"2\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"1\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"4\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"2\" height=\"1\"/><rect x=\"5\" y=\"6\" width=\"2\" height=\"1\"/></svg></button></li></ol></div>",
+      "css": ".ds-map { position: relative; padding: 56px 32px 32px; background: var(--color-lcd-0, #0f380f); box-shadow: 0 -4px 0 0 var(--color-lcd-3, #cadc9f), 0 4px 0 0 var(--color-lcd-3, #cadc9f), -4px 0 0 0 var(--color-lcd-3, #cadc9f), 4px 0 0 0 var(--color-lcd-3, #cadc9f); } .ds-track { position: absolute; left: 12%; right: 12%; top: calc(56px + 28px - 4px); height: 8px; background: repeating-linear-gradient(to right, var(--color-lcd-1, #306230) 0 8px, transparent 8px 14px); } .ds-walked { height: 100%; width: 66%; background: var(--color-lcd-2, #8bac0f); transition: width 500ms steps(8); } .ds-nodes { position: relative; display: flex; justify-content: space-between; list-style: none; margin: 0; padding: 0; } .ds-nodes li { position: relative; display: flex; flex-direction: column; align-items: center; } .ds-node { display: grid; place-items: center; width: 56px; height: 56px; border: 0; border-radius: 0; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; cursor: pointer; background: var(--color-lcd-1, #306230); color: var(--color-lcd-3, #cadc9f); box-shadow: 0 -3px 0 0 var(--color-lcd-3, #cadc9f), 0 3px 0 0 var(--color-lcd-3, #cadc9f), -3px 0 0 0 var(--color-lcd-3, #cadc9f), 3px 0 0 0 var(--color-lcd-3, #cadc9f); } .ds-node.is-reached { background: var(--color-lcd-2, #8bac0f); color: var(--color-lcd-0, #0f380f); } .ds-node.is-current { background: var(--color-magenta, #a3245f); color: var(--color-lcd-3, #cadc9f); } .ds-node:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-hop { position: absolute; top: -24px; color: var(--color-magenta, #a3245f); animation: ds-hop 0.9s steps(1) infinite; } @keyframes ds-hop { 50% { transform: translateY(-6px); } } @media (prefers-reduced-motion: reduce) { .ds-hop { animation: none; } }"
+    },
+    {
+      "name": "Handheld Console",
+      "kind": "custom",
+      "refersTo": "console-shell",
+      "description": "Projects as a Game Boy: shell, bezel with magenta/navy stripe and power LED, LCD screen, D-pad, round magenta A/B keys and rubber SELECT/START.",
+      "html": "<div class=\"ds-field-gray3\"><div class=\"ds-gb\"><div class=\"ds-gb-bezel\"><div class=\"ds-gb-stripe\" aria-hidden=\"true\"><span class=\"ds-gb-m\"></span><span class=\"ds-gb-print\">dot matrix · YG</span><span class=\"ds-gb-n\"></span></div><div class=\"ds-gb-row\"><span class=\"ds-gb-led\" aria-hidden=\"true\"></span><div class=\"ds-gb-screen\"><p>AI Code Review</p><span class=\"ds-gb-caption\">Concept</span></div></div></div><p class=\"ds-gb-logo\" aria-hidden=\"true\">YG <span>portfolio</span></p><div class=\"ds-gb-controls\"><div class=\"ds-dpad\" role=\"group\" aria-label=\"Cartridges\"><span class=\"ds-dpad-v\"></span><span class=\"ds-dpad-h\"></span><button type=\"button\" class=\"ds-dpad-l\" aria-label=\"Previous cartridge\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"4\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"3\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"2\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"1\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"2\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"3\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"4\" y=\"6\" width=\"1\" height=\"1\"/></svg></button><button type=\"button\" class=\"ds-dpad-r\" aria-label=\"Next cartridge\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg></button></div><div class=\"ds-ab\"><button type=\"button\" class=\"ds-key ds-key-b\" aria-label=\"Previous cartridge\">B</button><button type=\"button\" class=\"ds-key ds-key-a\" aria-label=\"Open project\">A</button></div></div><div class=\"ds-gb-rubbers\"><span><i></i>select</span><a href=\"#\"><i></i>start</a></div></div></div>",
+      "css": ".ds-field-gray3 { background: var(--color-body, #c9c5bf); padding: 32px; } .ds-gb { width: 300px; padding: 16px 20px 32px; background: var(--color-shell, #d8d4ce); border-radius: 0.6rem 0.6rem 3.5rem 0.6rem; } .ds-gb-bezel { padding: 12px 16px 20px; background: var(--color-bezel, #4a4d63); border-radius: 0.5rem 0.5rem 2rem 0.5rem; } .ds-gb-stripe { display: flex; align-items: center; gap: 8px; } .ds-gb-m, .ds-gb-n { flex: 1; height: 3px; } .ds-gb-m { background: var(--color-magenta, #a3245f); } .ds-gb-n { background: var(--color-navy-2, #2a3170); } .ds-gb-print { font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9px; color: var(--color-navy-ink, #a9aedb); } .ds-gb-row { display: flex; align-items: center; gap: 12px; margin-top: 12px; } .ds-gb-led { width: 8px; height: 8px; background: var(--color-led, #e3453a); } .ds-gb-screen { position: relative; flex: 1; aspect-ratio: 10 / 9; display: grid; place-items: center; background-color: var(--color-lcd-3, #cadc9f); background-image: linear-gradient(to right, rgb(15 56 15 / 0.07) 1px, transparent 1px), linear-gradient(to bottom, rgb(15 56 15 / 0.07) 1px, transparent 1px); background-size: 4px 4px; color: var(--color-lcd-0, #0f380f); } .ds-gb-screen p { margin: 0; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; text-align: center; } .ds-gb-caption { position: absolute; left: 0; bottom: 0; padding: 2px 6px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9px; background: var(--color-lcd-0, #0f380f); color: var(--color-lcd-3, #cadc9f); } .ds-gb-logo { margin: 16px 0 0; font-family: 'Pixelify Sans Variable', ui-monospace, monospace; font-size: 18px; font-weight: 700; color: var(--color-navy, #1e2355); } .ds-gb-logo span { font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; font-weight: 400; } .ds-gb-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; } .ds-dpad { position: relative; width: 96px; height: 96px; } .ds-dpad-v, .ds-dpad-h { position: absolute; background: var(--color-dpad, #2b2d3a); } .ds-dpad-v { inset: 0 32px; } .ds-dpad-h { inset: 32px 0; } .ds-dpad button { position: absolute; top: 32px; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; background: transparent; color: var(--color-dpad-ink, #6b6e80); cursor: pointer; } .ds-dpad-l { left: 0; } .ds-dpad-r { right: 0; } .ds-dpad button:active { color: var(--color-lcd-3, #cadc9f); } .ds-ab { position: relative; width: 112px; height: 96px; transform: rotate(-25deg); } .ds-key { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 999px; cursor: pointer; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; background: var(--color-magenta, #a3245f); color: var(--color-lcd-3, #cadc9f); } .ds-key:hover { background: var(--color-magenta-hi, #bd3272); } .ds-key:active { transform: translateY(2px); } .ds-key-b { left: 0; bottom: 12px; } .ds-key-a { right: 0; top: 8px; } .ds-key:focus-visible, .ds-dpad button:focus-visible, .ds-gb-rubbers a:focus-visible { outline: 3px solid var(--color-magenta-hi, #bd3272); outline-offset: 3px; } .ds-gb-rubbers { display: flex; justify-content: center; gap: 24px; margin-top: 24px; } .ds-gb-rubbers span, .ds-gb-rubbers a { display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 9px; color: var(--color-body-ink, #4a4d63); text-decoration: none; } .ds-gb-rubbers a:hover { color: var(--color-navy, #1e2355); } .ds-gb-rubbers i { width: 40px; height: 10px; border-radius: 999px; background: var(--color-rubber, #9d988f); transform: rotate(-25deg); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "status-badge",
+      "description": "Navy HUD badge trailing a card title; a blinking magenta square marks work in progress.",
+      "html": "<div class=\"ds-field-gray2\"><span class=\"ds-badge\"><span class=\"ds-badge-dot\"></span>In progress</span></div>",
+      "css": ".ds-field-gray2 { background: var(--color-body, #c9c5bf); padding: 24px; } .ds-badge { display: inline-flex; align-items: center; gap: 8px; padding: 4px 8px; background: var(--color-navy, #1e2355); color: var(--color-lcd-3, #cadc9f); font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10px; } .ds-badge-dot { width: 8px; height: 8px; background: var(--color-magenta, #a3245f); animation: ds-blink 1.1s steps(1) infinite; } @keyframes ds-blink { 50% { opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-badge-dot { animation: none; } }"
+    },
+    {
+      "name": "Channels Window",
+      "kind": "nav",
+      "refersTo": "readout-panel",
+      "description": "Contact menu: lcd-0 window framed lcd-3 with a pale title bar; rows fill lcd-1 and show ▶ on hover/focus.",
+      "html": "<div class=\"ds-field-navy3\"><div class=\"ds-channels\"><p class=\"ds-channels-bar\">Select channel</p><ul><li><a href=\"#\"><svg class=\"ds-lit2\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 9 7\" width=\"18\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"9\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"7\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"1\" height=\"1\"/><rect x=\"2\" y=\"2\" width=\"1\" height=\"1\"/><rect x=\"6\" y=\"2\" width=\"1\" height=\"1\"/><rect x=\"8\" y=\"2\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"1\" height=\"1\"/><rect x=\"3\" y=\"3\" width=\"1\" height=\"1\"/><rect x=\"5\" y=\"3\" width=\"1\" height=\"1\"/><rect x=\"8\" y=\"3\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"1\" height=\"1\"/><rect x=\"4\" y=\"4\" width=\"1\" height=\"1\"/><rect x=\"8\" y=\"4\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"1\" height=\"1\"/><rect x=\"8\" y=\"5\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"9\" height=\"1\"/></svg><span class=\"ds-ch-text\"><span class=\"ds-ch-key\">Email</span><span class=\"ds-ch-val\">hello@example.dev</span></span><svg class=\"ds-ch-ptr\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg></a></li><li><a href=\"#\"><svg class=\"ds-lit2\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 9 9\" width=\"18\" height=\"18\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"1\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"7\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"1\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"6\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"1\" y=\"2\" width=\"7\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"9\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"2\" height=\"1\"/><rect x=\"3\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"7\" y=\"4\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"9\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"9\" height=\"1\"/><rect x=\"1\" y=\"7\" width=\"7\" height=\"1\"/><rect x=\"2\" y=\"8\" width=\"1\" height=\"1\"/><rect x=\"6\" y=\"8\" width=\"1\" height=\"1\"/></svg><span class=\"ds-ch-text\"><span class=\"ds-ch-key\">GitHub</span><span class=\"ds-ch-val\">@username</span></span><svg class=\"ds-ch-ptr\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 5 7\" width=\"10\" height=\"14\" fill=\"currentColor\" shape-rendering=\"crispEdges\" aria-hidden=\"true\"><rect x=\"0\" y=\"0\" width=\"1\" height=\"1\"/><rect x=\"0\" y=\"1\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"2\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"3\" width=\"4\" height=\"1\"/><rect x=\"0\" y=\"4\" width=\"3\" height=\"1\"/><rect x=\"0\" y=\"5\" width=\"2\" height=\"1\"/><rect x=\"0\" y=\"6\" width=\"1\" height=\"1\"/></svg></a></li></ul></div></div>",
+      "css": ".ds-field-navy3 { background: var(--color-navy, #1e2355); padding: 32px; } .ds-channels { max-width: 380px; font-family: 'Pixelify Sans Variable', ui-monospace, monospace; background: var(--color-lcd-0, #0f380f); color: var(--color-lcd-3, #cadc9f); box-shadow: 0 -4px 0 0 var(--color-lcd-3, #cadc9f), 0 4px 0 0 var(--color-lcd-3, #cadc9f), -4px 0 0 0 var(--color-lcd-3, #cadc9f), 4px 0 0 0 var(--color-lcd-3, #cadc9f); } .ds-channels-bar { margin: 0; padding: 12px 20px; background: var(--color-lcd-3, #cadc9f); color: var(--color-lcd-0, #0f380f); font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 12px; } .ds-channels ul { list-style: none; margin: 0; padding: 8px; } .ds-channels a { display: flex; align-items: center; gap: 12px; padding: 12px; color: inherit; text-decoration: none; } .ds-channels a:hover, .ds-channels a:focus-visible { background: var(--color-lcd-1, #306230); outline: none; } .ds-lit2 { color: var(--color-lcd-2, #8bac0f); flex-shrink: 0; } .ds-ch-text { flex: 1; min-width: 0; } .ds-ch-key { display: block; font-family: 'Silkscreen', 'Pixelify Sans Variable', ui-monospace, monospace; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10px; color: var(--color-lcd-2, #8bac0f); } .ds-ch-val { display: block; font-size: 17px; } .ds-ch-ptr { margin-right: 8px; opacity: 0; } .ds-channels a:hover .ds-ch-ptr, .ds-channels a:focus-visible .ds-ch-ptr { opacity: 1; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Handheld Cartridge",
+    "overview": "The whole site is a Game Boy game rendered on its own pixel LCD. The visitor boots it, meets the character in a dialog box and a status screen, opens an inventory, walks a career level map, slots cartridges into the handheld and presses A to talk. It is not a normal page wearing a pixel font: every section is a game screen with its own field color and its own interaction, and every visual device comes from the handheld itself, either the four-shade screen or the plastic shell around it.\n\nTwo materials build everything. The **LCD** is four greens, darkest to backlit pale, overlaid with a faint dot-matrix grid; it carries text, screens and every in-game window. The **console plastic** is warm gray body, navy label ink and magenta A/B buttons; it carries the fields that are not screens (stack, projects, contact, footer) and the one action color. In projects the plastic becomes the handheld itself: a pale shell, a dark bezel, a D-pad and rubber keys around a live screen. Density is generous between sections (96–128px of field) and tight inside windows, like a handheld UI: small HUD labels, hard frames, dashed row dividers.\n\nNothing is smooth. Edges are hard, frames are notched pixel rectangles, motion moves in `steps()`, images render pixelated, fonts render unsmoothed. There are no gradients used as shading, no blur, no glass, no soft shadows and no light/dark theme: this is one world with one fixed palette.",
+    "keyCharacteristics": [
+      "Four LCD shades for screens and text, console plastic for the non-screen fields, magenta for action and selection.",
+      "Each section owns a field: hero lcd-0, about lcd-3, stack navy, experience lcd-1, projects body gray, contact navy, footer body gray.",
+      "Notched 4px pixel frames with empty corners instead of shadows or radii.",
+      "Pixelify Sans for display and reading, Silkscreen uppercase HUD for labels, buttons, hints and meta.",
+      "One icon system: authored bitmap `PixelIcon`s drawn as crisp-edged SVG rects; brand logos appear only as their LCD rendering.",
+      "Stepped motion everywhere; each section enters with its own game move."
+    ],
+    "rules": [
+      {
+        "name": "The Four Shades Rule",
+        "body": "Text and screens are drawn only in lcd-0 to lcd-3. The plastic colors (body, body-2, navy, navy-2) and the hardware tones (shell, bezel, dpad, dpad-ink, rubber) carry the fields and objects that are not screens; they never become screen content.",
+        "section": "colors"
+      },
+      {
+        "name": "The A Button Rule",
+        "body": "Magenta means \"act\", \"selected\" or \"equipped\". It fills primary actions and marks the current selection or live status (selection frames, equipped marks, the selected cartridge strip, current map node, ▶ bullets on projects, in-progress squares). It never decorates a neutral surface or colors body text; the printed bezel stripes (footer top, console screen bezel) are the handheld's own livery, not decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Power Light Rule",
+        "body": "Power Red appears only as a power light: the footer power dot, the laptop LED and the console LED.",
+        "section": "colors"
+      },
+      {
+        "name": "The Screen Logo Rule",
+        "body": "Brand logos never appear in their own colors. They are rendered on the LCD: downsampled to a 24×24 canvas, quantized to the four shades with the lightest dropped so the slot's own screen shows through, and shown pixelated at 40–56px. Labels without a logo get an authored technique glyph instead.",
+        "section": "colors"
+      },
+      {
+        "name": "The Own Field Rule",
+        "body": "Every section owns one field color in this order: hero lcd-0, about lcd-3, stack navy, experience lcd-1, projects body, contact navy, footer body with a magenta and a navy bezel stripe (6px each, 6px apart) on top. Adjacent sections never share a field.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Pixelify Sans is for display and reading; Silkscreen HUD is for labels, buttons, hints and meta. Never set a paragraph in Silkscreen and never set a HUD label in Pixelify. HUD text is 11px or larger, except inventory tile names (9px on phones, 10px from 640px) and the console's decorative printed lettering (9px).",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Tone Heading Rule",
+        "body": "Section headings are one sentence split in two: the title at 700 in the field's primary text color, the highlight at 500 in its secondary shade. Per field: about lcd-0 / lcd-1; stack lcd-3 / lcd-2; experience lcd-3 / lcd-2 inside an lcd-0 plate framed in lcd-3; projects navy / body-ink (subtitle body-ink); contact lcd-3 / lcd-2. The hero name is single-tone lcd-3 with the role line in lcd-2 below it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Meta Trails Rule",
+        "body": "Nothing sits above a heading. Meta (world code, company, period, category, status, \"current\") goes below the title as a trailing HUD row or as an inline badge.",
+        "section": "typography"
+      },
+      {
+        "name": "The Grid Only On Glass Rule",
+        "body": "The dot-matrix `lcd-grid` (1px lines on a 4px cell) appears only on LCD surfaces: hero and 404 (pale ink at 4.5%), about (dark ink at 7%), experience (dark ink at 12%) and cartridge concept art (on the rack labels and the console screen). Plastic fields (navy, gray) and the console hardware stay flat.",
+        "section": "layout"
+      },
+      {
+        "name": "The Notch Not Shadow Rule",
+        "body": "Separation is a hard 4px frame with empty corners. No soft, blurred or offset shadows anywhere except the button's key-travel drop.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat Plastic Rule",
+        "body": "The 3D laptop and the console shade their parts with flat plastic tones (one color per face or part), never gradients.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do draw text and screens only in the four LCD shades, and give non-screen fields console plastic (body, navy).",
+      "Do give each new section its own field, keeping adjacent fields different and following the hero lcd-0, about lcd-3, stack navy, experience lcd-1, projects body, contact navy order.",
+      "Do use magenta for primary actions and for the current selection, equipped or live status, and nothing else.",
+      "Do frame windows with the notched 4px pixel frame in the shade that contrasts with both plate and field.",
+      "Do set reading text in Pixelify Sans (18px body, 17–18px in windows) and every label, button, hint and meta line in Silkscreen HUD uppercase at 0.06em, 11px or larger.",
+      "Do split section headings into two tones per field and put meta below the title as a trailing HUD row or badge.",
+      "Do draw every icon as a `PixelIcon` bitmap at an integer pixel scale, and show brand logos only as their four-shade LCD rendering.",
+      "Do move in `steps()`, give each section its own entrance, and show everything static under reduced motion.",
+      "Do render images pixelated and keep dot-matrix grids on LCD surfaces only."
+    ],
+    "donts": [
+      "Don't use smooth gradients, blur, glass, transparency-as-depth or soft shadows.",
+      "Don't add drop shadows beyond the button's key-travel drop.",
+      "Don't round corners on screens, windows, frames, slots, tabs or buttons; round shapes belong only to the button cap and the handheld hardware (shell, bezel, A/B keys, rubbers, speaker slots).",
+      "Don't add a light/dark theme toggle; the palette is fixed.",
+      "Don't put an eyebrow or kicker above a heading.",
+      "Don't use magenta decoratively on neutral surfaces or as a text color for body copy.",
+      "Don't use Power Red for anything but a power light (footer dot, laptop LED, console LED).",
+      "Don't mix in glyph or font icons, or third-party icon sets; redraw marks on the pixel grid.",
+      "Don't show a brand logo in its own colors.",
+      "Don't lay the dot-matrix grid over navy or gray plastic fields or the console hardware."
+    ]
+  }
+}

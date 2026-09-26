@@ -1,0 +1,101 @@
+---
+import Laptop3D from './Laptop3D.astro';
+import PixelIcon from './icons/PixelIcon';
+import { profile } from '@/data/profile';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const socials = [
+  { href: profile.socials.github, label: 'GitHub', icon: 'github' },
+  { href: profile.socials.linkedin, label: 'LinkedIn', icon: 'linkedin' },
+] as const;
+---
+
+<section id="home" data-enter="boot" class="bg-lcd-0 lcd-grid relative overflow-x-clip [--grid-ink:rgb(202_220_159/0.045)]">
+  <div class="container-page grid min-h-[92svh] items-center gap-14 pt-28 pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
+    <div>
+      <h1 class="boot-logo text-lcd-3 text-[3.5rem] leading-[0.92] font-bold sm:text-7xl lg:text-[6rem]">
+        {profile.name}
+      </h1>
+
+      <p class="boot-after text-lcd-2 font-pixel mt-6 text-2xl font-semibold md:text-3xl" style="--i: 0">
+        {profile.role[lang]}
+      </p>
+
+      <p class="boot-after text-lcd-3 mt-4 max-w-[44ch] text-xl leading-relaxed md:text-[1.35rem]" style="--i: 1">
+        {profile.intro[lang]}
+      </p>
+
+      <div class="boot-after mt-10 flex flex-wrap items-center gap-x-5 gap-y-6" style="--i: 2">
+        <a href="#contact" class="btn btn-a" style="--frame: var(--color-lcd-3)">
+          <span class="btn-cap">A</span>
+          {t('hero.ctaContact')}
+        </a>
+        <a href="#experience" class="btn btn-b" style="--frame: var(--color-lcd-3)">
+          <span class="btn-cap">B</span>
+          {t('hero.ctaProjects')}
+        </a>
+        <ul class="hidden items-center gap-1 sm:flex">
+          {
+            socials.map(({ href, label, icon }) => (
+              <li>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  class="text-lcd-2 hover:text-lcd-3 grid size-11 place-items-center"
+                >
+                  <PixelIcon name={icon} scale={2} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <p class="boot-after hud text-lcd-2 mt-12 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs" style="--i: 3">
+        {
+          profile.available && (
+            <span class="text-lcd-3 inline-flex items-center gap-2">
+              <span class="bg-lcd-2 animate-blink size-2.5" aria-hidden="true" />
+              {t('hero.available')}
+            </span>
+          )
+        }
+        <span>
+          <time data-local-time class="text-lcd-3 tabular-nums">--:--</time>{' '}
+          {t('hero.localTime')}
+        </span>
+      </p>
+    </div>
+
+    <div class="boot-after relative" style="--i: 2">
+      <div
+        data-laptop-stage
+        class="relative mx-auto grid aspect-square w-full max-w-[30rem] cursor-grab touch-pan-y place-items-center select-none data-dragging:cursor-grabbing"
+      >
+        <!-- Backlight pool quantized into hard rings, like a low-res LCD render -->
+        <div
+          aria-hidden="true"
+          class="absolute inset-[10%]"
+          style="background: radial-gradient(circle, var(--color-lcd-1) 0 34%, rgb(48 98 48 / 0.55) 34% 50%, rgb(48 98 48 / 0.25) 50% 66%, transparent 66%);"
+        >
+        </div>
+        <Laptop3D />
+      </div>
+      <p class="hud text-lcd-2 mt-3 flex items-center justify-center gap-3 text-[12px]">
+        <PixelIcon name="cursorLeft" scale={2} className="animate-blink" />
+        {t('hero.drag')}
+        <PixelIcon name="cursor" scale={2} className="animate-blink" />
+      </p>
+    </div>
+  </div>
+</section>

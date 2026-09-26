@@ -1,0 +1,133 @@
+---
+import PixelIcon, { type PixelIconName } from './icons/PixelIcon';
+import { education, type Education } from '@/data/education';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Each kind of achievement has its own glyph and shade in the trophy case.
+const glyph: Record<Education['kind'], PixelIconName> = { degree: 'trophy', certification: 'diploma', ai: 'chip' };
+const shade: Record<Education['kind'], string> = { degree: 'text-lcd-2', certification: 'text-lcd-3', ai: 'text-lcd-2' };
+const kindLabel = (kind: Education['kind']) =>
+  kind === 'degree' ? t('education.degree') : kind === 'ai' ? t('education.aiCertification') : t('education.certification');
+---
+
+<div class="mt-24" data-trophies>
+  <h3 class="text-3xl font-bold">
+    {t('education.title')} <span class="font-normal">{t('education.titleHighlight')}</span>
+  </h3>
+  <p class="hud text-lcd-3 mt-4 flex items-center gap-2 text-[12px]">
+    <PixelIcon name="cursor" scale={2} className="animate-blink" />
+    {t('education.hint')}
+  </p>
+
+  <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+    <!-- Trophy case: one pedestal per entry -->
+    <div
+      class="bg-lcd-0 pixel-box grid grid-cols-3 gap-3 self-start p-4 sm:gap-5 sm:p-6"
+      style="--frame: var(--color-lcd-3)"
+      role="tablist"
+      aria-label={t('education.title')}
+      data-trophy-grid
+    >
+      {
+        education.map((item, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`trophy-tab-${index}`}
+            aria-controls={`trophy-panel-${index}`}
+            aria-selected={index === 0 ? 'true' : 'false'}
+            aria-label={`${item.title[lang]} · ${item.institution[lang]}`}
+            tabindex={index === 0 ? 0 : -1}
+            data-trophy={index}
+            class="group aria-selected:bg-lcd-1 hover:bg-lcd-1 flex flex-col items-center gap-3 px-2 pt-5 pb-3"
+          >
+            <PixelIcon
+              name={glyph[item.kind]}
+              scale={6}
+              className={`${shade[item.kind]} transition-transform duration-150 ease-[steps(2)] group-hover:-translate-y-1 group-aria-selected:-translate-y-1`}
+            />
+            <span class="bg-lcd-1 group-aria-selected:bg-lcd-2 h-2 w-3/4" aria-hidden="true"></span>
+            <span class="text-lcd-3 text-center text-[16px] leading-tight font-semibold">{item.short[lang]}</span>
+            <span class="hud text-lcd-2 text-center text-[11px] leading-tight">{kindLabel(item.kind)}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="bg-lcd-3 text-lcd-0 pixel-box relative min-h-48 self-start p-6 md:p-8" style="--frame: var(--color-lcd-0)">
+      {
+        education.map((item, index) => (
+          <div role="tabpanel" id={`trophy-panel-${index}`} aria-labelledby={`trophy-tab-${index}`} hidden={index !== 0}>
+            <p class="font-pixel text-2xl leading-snug font-bold md:text-3xl">{item.title[lang]}</p>
+            <p class="text-lcd-1 mt-3 text-lg">{item.institution[lang]}</p>
+            <p class="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span class="hud bg-lcd-0 text-lcd-3 inline-flex items-center gap-2 px-2 py-1 text-[11px]">
+                <PixelIcon name={glyph[item.kind]} scale={1} />
+                {kindLabel(item.kind)}
+              </span>
+              {item.issued && (
+                <span class="text-lcd-1 text-[17px]">
+                  {t('education.issued')} <span class="text-lcd-0 font-semibold tabular-nums">{item.issued[lang]}</span>
+                </span>
+              )}
+            </p>
+            {item.credential && (
+              <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+                <a
+                  href={item.credential.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-a"
+                  style="--frame: var(--color-lcd-0)"
+                >
+                  <span class="btn-cap">A</span>
+                  {t('education.credential')}
+                  <PixelIcon name="external" scale={1} />
+                </a>
+                <span class="hud text-lcd-1 text-[11px]">
+                  ID · <span class="text-lcd-0 font-sans text-[16px] tracking-normal normal-case">{item.credential.id}</span>
+                </span>
+              </div>
+            )}
+          </div>
+        ))
+      }
+      <PixelIcon name="down" scale={3} className="animate-blink absolute right-5 bottom-4" />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Trophy case: a tablist driven by click and arrow keys (left/right step, up/down jump a row).
+  document.querySelectorAll<HTMLElement>('[data-trophies]').forEach((root) => {
+    const grid = root.querySelector<HTMLElement>('[data-trophy-grid]');
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-trophy]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const select = (index: number, focus = false) => {
+      tabs.forEach((tab, i) => {
+        tab.setAttribute('aria-selected', String(i === index));
+        tab.tabIndex = i === index ? 0 : -1;
+      });
+      panels.forEach((panel, i) => (panel.hidden = i !== index));
+      if (focus) tabs[index].focus();
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => select(index));
+      tab.addEventListener('keydown', (event) => {
+        const cols = grid ? getComputedStyle(grid).gridTemplateColumns.split(' ').length : 1;
+        const step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: cols, ArrowUp: -cols }[event.key];
+        if (!step) return;
+        event.preventDefault();
+        select(Math.min(tabs.length - 1, Math.max(0, index + step)), true);
+      });
+    });
+  });
+</script>

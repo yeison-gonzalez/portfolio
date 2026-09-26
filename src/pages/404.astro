@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getHomeUrl, useTranslations } from '@/i18n/utils';
+
+// GitHub Pages serves a single 404 page, so it is shown in both languages.
+const es = useTranslations('es');
+const en = useTranslations('en');
+---
+
+<BaseLayout lang="es" title={`404 · ${es('notFound.title')}`} alternates={false} noindex>
+  <main id="main" class="bg-lcd-0 lcd-grid container-page grid min-h-dvh max-w-none place-items-center [--grid-ink:rgb(202_220_159/0.045)]">
+    <div class="w-full max-w-lg">
+      <h1 class="text-lcd-3 text-[5rem] leading-none font-bold sm:text-[7rem]">404</h1>
+      <div class="bg-lcd-3 text-lcd-0 pixel-box mt-8 p-6" style="--frame: var(--color-lcd-2)">
+        <p class="font-pixel text-2xl font-bold">{es('notFound.title')}</p>
+        <p class="text-lcd-1 mt-2 text-lg">{es('notFound.text')}</p>
+        <p class="text-lcd-1 mt-1 text-lg" lang="en">{en('notFound.text')}</p>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-6">
+        <a href={getHomeUrl('es')} class="btn btn-a" style="--frame: var(--color-lcd-3)">
+          <span class="btn-cap">A</span>
+          {es('notFound.back')}
+        </a>
+        <a href={getHomeUrl('en')} class="btn btn-b" lang="en" style="--frame: var(--color-lcd-3)">
+          <span class="btn-cap">B</span>
+          {en('notFound.back')}
+        </a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

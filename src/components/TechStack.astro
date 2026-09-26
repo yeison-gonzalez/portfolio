@@ -1,0 +1,48 @@
+---
+import Inventory from './Inventory';
+import SectionHeading from './SectionHeading.astro';
+import { getInventory } from '@/lib/gameData';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const { pockets, items } = await getInventory(lang, t('stack.practices'), t('stack.practicesDescription'));
+---
+
+<section id="stack" data-enter="slots" class="bg-navy py-24 md:py-32">
+  <div class="container-page">
+    <SectionHeading
+      title={t('stack.title')}
+      highlight={t('stack.titleHighlight')}
+      titleClass="text-lcd-3"
+      highlightClass="text-lcd-2"
+    />
+
+    <Inventory
+      client:visible
+      items={items}
+      pockets={pockets}
+      labels={{
+        hint: t('stack.hint'),
+        mainStack: t('stack.mainStack'),
+        mainHint: t('stack.mainHint'),
+        inventory: t('stack.inventory'),
+        all: t('stack.all'),
+        equipped: t('stack.equipped'),
+        usedIn: t('stack.usedIn'),
+        roleOne: t('stack.roleOne'),
+        roleMany: t('stack.roleMany'),
+        since: t('stack.since'),
+        projects: t('stack.projects'),
+        inProjects: t('stack.inProjects'),
+        inStack: t('stack.inStack'),
+      }}
+    />
+  </div>
+</section>

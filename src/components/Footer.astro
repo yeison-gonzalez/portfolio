@@ -1,0 +1,55 @@
+---
+import PixelIcon from './icons/PixelIcon';
+import { profile } from '@/data/profile';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+
+const socials = [
+  { href: profile.socials.linkedin, label: 'LinkedIn', icon: 'linkedin' },
+  { href: profile.socials.github, label: 'GitHub', icon: 'github' },
+  { href: profile.whatsapp, label: 'WhatsApp', icon: 'whatsapp' },
+] as const;
+---
+
+<footer class="bg-body text-navy">
+  <!-- The console's bezel stripes -->
+  <div aria-hidden="true">
+    <div class="bg-magenta h-1.5"></div>
+    <div class="bg-navy mt-1.5 h-1.5"></div>
+  </div>
+  <div class="container-page flex flex-col gap-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <p class="hud flex items-center gap-2 text-sm">
+        <span class="bg-led size-2.5" aria-hidden="true"></span>
+        © {year} {profile.name}
+      </p>
+      <p class="text-body-ink mt-2 text-[17px]">{t('footer.built')}</p>
+    </div>
+    <div class="-ml-2.5 flex items-center gap-1 sm:ml-0">
+      {
+        socials.map(({ href, label, icon }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            class="text-body-ink hover:text-navy grid size-11 place-items-center"
+          >
+            <PixelIcon name={icon} scale={2} />
+          </a>
+        ))
+      }
+      <a href="#home" aria-label={t('footer.top')} class="btn btn-b ml-3 min-h-10 px-3" style="--frame: var(--color-navy)">
+        <PixelIcon name="up" scale={2} />
+      </a>
+    </div>
+  </div>
+</footer>

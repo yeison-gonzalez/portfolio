@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  /** Second half of the sentence, set in the field's secondary shade. */
+  highlight: string;
+  subtitle?: string;
+  /** Text color classes for the title, highlight and subtitle on this section's field. */
+  titleClass?: string;
+  highlightClass?: string;
+  subtitleClass?: string;
+  /** Drop the bottom margin (when the heading sits inside its own plate). */
+  flush?: boolean;
+}
+
+const {
+  title,
+  highlight,
+  subtitle,
+  titleClass = 'text-lcd-0',
+  highlightClass = 'text-lcd-1',
+  subtitleClass = 'text-lcd-1',
+  flush = false,
+} = Astro.props;
+---
+
+<header class:list={['max-w-3xl', !flush && 'mb-12 md:mb-16']}>
+  <h2 class:list={['text-[2rem] leading-[1.05] font-bold sm:text-5xl', titleClass]}>
+    {title} <span class:list={['font-medium', highlightClass]}>{highlight}</span>
+  </h2>
+  {subtitle && <p class:list={['mt-5 max-w-2xl text-lg leading-relaxed md:text-xl', subtitleClass]}>{subtitle}</p>}
+</header>

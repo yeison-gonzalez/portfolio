@@ -1,0 +1,239 @@
+---
+/**
+ * Rotating 3D open laptop built with CSS 3D transforms.
+ * Each part is a box made of six faces; sizes are in `em` so the whole model
+ * scales with the root font-size (smaller on mobile).
+ */
+
+type FaceName = 'front' | 'back' | 'left' | 'right' | 'top' | 'bottom';
+
+interface Part {
+  name: 'deck' | 'lid';
+  /** Width, height, depth in em. */
+  size: [number, number, number];
+  /** Transform placing the box center. */
+  transform: string;
+  faces: Partial<Record<FaceName, string>>;
+}
+
+function boxFaces([w, h, d]: Part['size']) {
+  return [
+    { name: 'front', transform: `translateZ(${d / 2}em)`, width: w, height: h },
+    { name: 'back', transform: `rotateY(180deg) translateZ(${d / 2}em)`, width: w, height: h },
+    { name: 'right', transform: `rotateY(90deg) translateZ(${w / 2}em)`, width: d, height: h },
+    { name: 'left', transform: `rotateY(-90deg) translateZ(${w / 2}em)`, width: d, height: h },
+    { name: 'top', transform: `rotateX(90deg) translateZ(${h / 2}em)`, width: w, height: d },
+    { name: 'bottom', transform: `rotateX(-90deg) translateZ(${h / 2}em)`, width: w, height: d },
+  ] satisfies { name: FaceName; transform: string; width: number; height: number }[];
+}
+
+const WIDTH = 12.5;
+const DECK = { height: 0.45, depth: 8.2, y: 3.4 };
+const LID = { height: 8, depth: 0.3, tilt: 16 };
+
+// The lid hinges on the back edge of the deck's top surface.
+const hingeY = DECK.y - DECK.height / 2;
+const hingeZ = -DECK.depth / 2;
+
+// Flat console-plastic shades, one per face: no smooth gradients in a pixel world.
+const shell = 'bg-body';
+const edge = 'bg-body-2';
+
+const parts: Part[] = [
+  {
+    name: 'deck',
+    size: [WIDTH, DECK.height, DECK.depth],
+    transform: `translate3d(0, ${DECK.y}em, 0)`,
+    faces: {
+      top: 'bg-[#d5d1cb]',
+      bottom: 'bg-[#7c776f]',
+      front: edge,
+      back: edge,
+      left: edge,
+      right: edge,
+    },
+  },
+  {
+    name: 'lid',
+    size: [WIDTH, LID.height, LID.depth],
+    transform: `translate3d(0, ${hingeY}em, ${hingeZ}em) rotateX(${LID.tilt}deg) translate3d(0, ${-LID.height / 2}em, ${LID.depth / 2}em)`,
+    faces: {
+      front: 'bg-[#4a4d63]',
+      back: shell,
+      left: edge,
+      right: edge,
+      top: 'bg-body',
+      bottom: 'bg-body-2',
+    },
+  },
+];
+
+const codeLines: [string, number][][] = [
+  [['#0f380f', 1.4], ['#306230', 2.2], ['#0f380f', 1.8]],
+  [['#0f380f', 1], ['#306230', 3]],
+  [['#306230', 1.6], ['#0f380f', 1.2], ['#306230', 2]],
+  [['#0f380f', 2.4], ['#306230', 1.6]],
+  [['#306230', 1.2], ['#0f380f', 2.8]],
+  [['#0f380f', 0.8], ['#306230', 2]],
+  [['#306230', 1.6], ['#0f380f', 2.4]],
+];
+const indents = [0, 1, 1, 2, 2, 1, 0];
+
+// Keyboard rows: number of keys per row (the last row has a wide space bar).
+const keyRows = [14, 14, 13, 12];
+---
+
+<div class="relative grid size-40 place-items-center text-[16px] md:size-52 md:text-[20px] lg:text-[25px]" aria-hidden="true">
+  <div class="[perspective:1100px]">
+    <div data-laptop class="relative [transform-style:preserve-3d]" style="transform: rotateX(-18deg) rotateY(-32deg);">
+      {
+        parts.map((part) => (
+          <div class="absolute top-0 left-0 [transform-style:preserve-3d]" style={`transform: ${part.transform};`}>
+            {boxFaces(part.size).map((face) => (
+              <div
+                class:list={['absolute overflow-hidden [backface-visibility:hidden]', part.faces[face.name] ?? 'bg-body-2']}
+                style={`width: ${face.width}em; height: ${face.height}em; margin: -${face.height / 2}em 0 0 -${face.width / 2}em; transform: ${face.transform};`}
+              >
+                {part.name === 'lid' && face.name === 'front' && (
+                  <div class="bg-lcd-3 absolute inset-[0.5em] top-[0.6em] overflow-hidden">
+                    <div class="bg-lcd-2 flex items-center gap-[0.25em] px-[0.5em] py-[0.3em]">
+                      <span class="bg-lcd-0 size-[0.35em]" />
+                      <span class="bg-lcd-0 size-[0.35em]" />
+                      <span class="bg-lcd-0 size-[0.35em]" />
+                      <span class="bg-lcd-1 ml-[0.4em] h-[0.3em] w-[3em]" />
+                    </div>
+                    <div class="space-y-[0.4em] p-[0.7em]">
+                      {codeLines.map((line, index) => (
+                        <div class="flex gap-[0.25em]" style={`padding-left: ${indents[index] * 0.6}em`}>
+                          {line.map(([color, width]) => (
+                            <span class="h-[0.35em]" style={`background: ${color}; width: ${width}em`} />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                    <span class="text-lcd-0 font-pixel absolute right-[0.6em] bottom-[0.3em] text-[1.3em] font-bold">
+                      &lt;/&gt;
+                    </span>
+                  </div>
+                )}
+                {part.name === 'lid' && face.name === 'front' && (
+                  <span class="bg-led absolute top-[0.2em] left-[0.5em] size-[0.22em]" />
+                )}
+                {part.name === 'lid' && face.name === 'back' && (
+                  <div class="absolute inset-0 grid place-items-center">
+                    <span class="text-navy hud grid place-items-center text-[1.1em]">
+                      YG
+                    </span>
+                  </div>
+                )}
+                {part.name === 'deck' && face.name === 'top' && (
+                  <div class="absolute inset-x-[0.8em] top-[0.7em] bottom-[0.5em] flex flex-col">
+                    {/* Top face is seen from above: its top edge is the hinge, its bottom edge faces the viewer. */}
+                    <div class="bg-body-2 space-y-[0.18em] p-[0.25em]">
+                      {keyRows.map((keys, row) => (
+                        <div class="flex gap-[0.18em]">
+                          {Array.from({ length: keys }, (_, key) => (
+                            <span
+                              class:list={[
+                                'bg-navy h-[0.55em]',
+                                row === keyRows.length - 1 && key === 4 ? 'flex-[5]' : 'flex-1',
+                              ]}
+                            />
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                    <div class="bg-body-2 mx-auto mt-[0.6em] w-[40%] flex-1" />
+                  </div>
+                )}
+                {part.name === 'deck' && face.name === 'front' && (
+                  <span class="bg-magenta absolute top-0 left-1/2 h-[0.18em] w-[2em] -translate-x-1/2" />
+                )}
+              </div>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  // Signature interaction: the laptop idles in a slow spin; grab it to spin it
+  // yourself, let go and it coasts with inertia before easing back to idle.
+  const TILT = -18;
+  const IDLE_SPEED = 360 / 22_000; // degrees per ms
+
+  document.querySelectorAll<HTMLElement>('[data-laptop-stage]').forEach((stage) => {
+    const model = stage.querySelector<HTMLElement>('[data-laptop]');
+    if (!model) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let angle = -32;
+    let velocity = reducedMotion ? 0 : IDLE_SPEED;
+    let dragging = false;
+    let lastX = 0;
+    let lastMove = 0;
+    let previous = 0;
+    let frame = 0;
+    let visible = true;
+
+    const render = () => {
+      model.style.transform = `rotateX(${TILT}deg) rotateY(${angle}deg)`;
+    };
+
+    const loop = (time: number) => {
+      const dt = previous ? Math.min(time - previous, 48) : 16;
+      previous = time;
+      if (!dragging) {
+        const target = reducedMotion ? 0 : IDLE_SPEED;
+        velocity += (target - velocity) * (1 - Math.exp(-dt / 900));
+        angle += velocity * dt;
+        render();
+      }
+      frame = visible ? requestAnimationFrame(loop) : 0;
+    };
+
+    const start = () => {
+      if (!frame) {
+        previous = 0;
+        frame = requestAnimationFrame(loop);
+      }
+    };
+
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) start();
+    }).observe(stage);
+
+    stage.addEventListener('pointerdown', (event) => {
+      dragging = true;
+      lastX = event.clientX;
+      lastMove = event.timeStamp;
+      velocity = 0;
+      stage.setPointerCapture(event.pointerId);
+      stage.dataset.dragging = '';
+    });
+
+    stage.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      const dx = event.clientX - lastX;
+      const dt = Math.max(event.timeStamp - lastMove, 1);
+      angle += dx * 0.45;
+      velocity = Math.max(-1.2, Math.min(1.2, (dx * 0.45) / dt));
+      lastX = event.clientX;
+      lastMove = event.timeStamp;
+      render();
+    });
+
+    const release = () => {
+      dragging = false;
+      delete stage.dataset.dragging;
+      start();
+    };
+    stage.addEventListener('pointerup', release);
+    stage.addEventListener('pointercancel', release);
+
+    start();
+  });
+</script>

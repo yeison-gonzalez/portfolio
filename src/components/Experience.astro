@@ -1,0 +1,96 @@
+---
+import CareerMap, { type Level } from './CareerMap';
+import Education from './Education.astro';
+import SectionHeading from './SectionHeading.astro';
+import { experience } from '@/data/experience';
+import { iconFor, logoFor, monthsIn, usesOf } from '@/lib/gameData';
+import type { Lang } from '@/i18n/ui';
+import { useTranslations } from '@/i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const duration = (months: number) => {
+  const years = Math.floor(months / 12);
+  const rest = months % 12;
+  const parts = [
+    years && `${years} ${years === 1 ? t('experience.yearOne') : t('experience.yearMany')}`,
+    rest && `${rest} ${rest === 1 ? t('experience.monthOne') : t('experience.monthMany')}`,
+  ];
+  return parts.filter(Boolean).join(' ');
+};
+
+// Oldest company is world 1; inside a world, the oldest role is stage 1.
+const levels: Level[] = await Promise.all(
+  [...experience].reverse().flatMap((company, worldIndex) =>
+    [...company.roles].reverse().map(async (role, stageIndex) => ({
+      id: `${worldIndex + 1}-${stageIndex + 1}`,
+      code: `${worldIndex + 1}-${stageIndex + 1}`,
+      world: company.name,
+      company: company.fullName ? `${company.name} · ${company.fullName[lang]}` : company.name,
+      title: role.title,
+      period: role.period[lang],
+      duration: duration(monthsIn(role.period.en)),
+      current: role.period.en.includes('Present'),
+      metrics: role.metrics?.map((metric) => metric[lang]) ?? [],
+      highlights: role.highlights[lang],
+      skills: await Promise.all(
+        role.stack.map(async (name) => ({
+          name,
+          logo: await logoFor(name),
+          icon: iconFor(name),
+          uses: usesOf(name),
+        })),
+      ),
+    })),
+  ),
+);
+---
+
+<section id="experience" data-enter="map" class="bg-lcd-1 lcd-grid text-lcd-3 py-24 [--grid-ink:rgb(15_56_15/0.12)] md:py-32">
+  <div class="container-page">
+    <div class="bg-lcd-0 pixel-box mb-12 inline-block px-6 py-5 md:mb-16 md:px-8" style="--frame: var(--color-lcd-3)">
+      <SectionHeading
+        title={t('experience.title')}
+        highlight={t('experience.titleHighlight')}
+        titleClass="text-lcd-3"
+        highlightClass="text-lcd-2"
+        flush
+      />
+    </div>
+
+    <CareerMap
+      client:visible
+      levels={levels}
+      labels={{
+        hint: t('experience.hint'),
+        prev: t('experience.prev'),
+        next: t('experience.next'),
+        current: t('experience.current'),
+        world: t('experience.world'),
+        tabs: {
+          achievements: t('experience.tab.achievements'),
+          skills: t('experience.tab.skills'),
+          details: t('experience.tab.details'),
+        },
+        company: t('experience.company'),
+        period: t('experience.period'),
+        duration: t('experience.duration'),
+        milestones: t('experience.milestones'),
+        achievementsCount: t('experience.achievementsCount'),
+        skillsCount: t('experience.skillsCount'),
+        skillHint: t('experience.skillHint'),
+        usedIn: t('stack.usedIn'),
+        roleOne: t('stack.roleOne'),
+        roleMany: t('stack.roleMany'),
+        since: t('stack.since'),
+      }}
+    />
+
+    <Education lang={lang} />
+  </div>
+</section>
